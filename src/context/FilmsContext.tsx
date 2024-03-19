@@ -5,6 +5,8 @@ type Film = {
   title: string;
   director: string;
   release_date: string;
+  description: string;
+  image: string;
 };
 
 type FilmContextType = {
@@ -28,9 +30,6 @@ function FilmContextProvider({ children }: { children: React.ReactNode }) {
     const fetchFilms = async () => {
       try {
         const response = await fetch('https://api-trybe-frontend.vercel.app/api/ghibli-animations');
-        if (!response.ok) {
-          throw new Error('Failed to fetch films');
-        }
         const data = await response.json();
         setFilms(data);
       } catch (error) {
