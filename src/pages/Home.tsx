@@ -6,6 +6,9 @@ import Heart from '../components/Heart';
 function Home() {
   const { films } = useFilmContext();
 
+  const [, updateState] = React.useState<any>();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   return (
     <div>
       <Header />
@@ -17,7 +20,10 @@ function Home() {
           <p>{film.description}</p>
           <Heart enabled={ film.favorite } />
           <button
-            onClick={ () => { film.favorite = !film.favorite; } }
+            onClick={ () => {
+              film.favorite = !film.favorite;
+              forceUpdate();
+            } }
           >
             Favoritar Filme
           </button>
