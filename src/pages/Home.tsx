@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFilmContext } from '../context/FilmsContext';
 import Header from '../components/Header';
+import Heart from '../components/Heart';
 
 function Home() {
   const { films } = useFilmContext();
@@ -14,7 +15,12 @@ function Home() {
           <h2>{film.title}</h2>
           <img src={ film.image } alt={ film.title } />
           <p>{film.description}</p>
-          <button>Favoritar Filme</button>
+          <Heart enabled={ film.favorite } />
+          <button
+            onClick={ () => { film.favorite = !film.favorite; } }
+          >
+            Favoritar Filme
+          </button>
         </div>
       ))}
     </div>

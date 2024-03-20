@@ -7,6 +7,7 @@ type Film = {
   release_date: string;
   description: string;
   image: string;
+  favorite: boolean;
 };
 
 type FilmContextType = {
